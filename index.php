@@ -32,7 +32,6 @@ if (!isset($_GET['room']) && empty($_GET['room'])) {
         $url .= $room;
     }
     header('Location: ' . $url, true, 302);
-    echo $room;
     die();
 }
 
@@ -44,16 +43,44 @@ function generate_name() {
     $j = array_rand($adjectives);
     return strtolower($nouns[$i] . "-" . $adjectives[$j]);
 }
+
 function self_url() {
     $protocol = (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] === "on" ? "https" : "http");
     return "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 }
+
+function qr() {
+    ob_start();
+    QRCode::png(self_url(), null, QR_ECLEVEL_L, 10);
+    $img = "data:image/png;base64," . base64_encode(ob_get_contents());
+    ob_end_clean();
+    return $img;
+}
+
+require('phpqrcode/qrlib.php');
+
+$root = preg_replace("|[^/]*$|", "/", $_SERVER['REQUEST_URI']);
+
 ?><!DOCTYPE html>
 <html>
   <head>
     <title>File Share P2P App using WebRTC</title>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+    <script src="<?= $root ?>js/rtcpeerconnection.bundle.js"></script>
+    <script>var room = '<?= $_GET['room'] ?>';</script>
   </head>
   <body>
     <h1>Room: <?= $_GET["room"] ?></h1>
+    <div>
+      <input type="file" id="file" disabled/>
+      <button id="send">waiting...</button>
+    </div>
+    <br/>
+    <br/>
+    <textarea cols="120" rows="7"></textarea>
+    <script src="<?= $root ?>js/main.js"></script>
+    <br/>
+    <img src="<?= qr() ?>"/>
   </body>
 </html>
