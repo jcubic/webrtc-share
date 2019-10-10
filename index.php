@@ -64,11 +64,52 @@ $root = preg_replace("|[^/]*$|", "/", $_SERVER['REQUEST_URI']);
 ?><!DOCTYPE html>
 <html>
   <head>
-    <title>File Share P2P App using WebRTC</title>
+    <title>P2P File Share (<?= $_GET["room"] ?>)</title>
+    <link rel="shortcut icon" href="<?= $root ?>favicon.ico">
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
     <script src="<?= $root ?>js/rtcpeerconnection.bundle.js"></script>
     <script>var room = '<?= $_GET['room'] ?>';</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+     div {
+  float: left;
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 20px;
+}
+div input {
+  right: 0;
+}
+div button, div input {
+  position: absolute;
+  right: 0;
+}
+div button, div input:not([disabled]) {
+  cursor: pointer;
+}
+div input:hover:not([disabled]) + button,
+div input:active:not([disabled]) + button {
+  border-style: inset;
+  border-width: 1px;
+}
+
+div button {
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+textarea {
+  max-width: calc(100% - 10px);
+}
+     #qr {
+         max-width: 100%;
+     }
+    </style>
   </head>
   <body>
     <h1>Room: <?= $_GET["room"] ?></h1>
@@ -77,10 +118,13 @@ $root = preg_replace("|[^/]*$|", "/", $_SERVER['REQUEST_URI']);
       <button id="send">waiting...</button>
     </div>
     <br/>
+    <progress class="send"></progress>
+    <progress class="receive"></progress>
+    <br/>
     <br/>
     <textarea cols="120" rows="7"></textarea>
     <script src="<?= $root ?>js/main.js"></script>
     <br/>
-    <img src="<?= qr() ?>"/>
+    <img id="qr" src="<?= qr() ?>"/>
   </body>
 </html>
