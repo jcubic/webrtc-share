@@ -320,9 +320,11 @@
     // :: init code
     // ------------------------------------------------------------------------
     function init() {
-        users.push({
-            id: connection.getSessionid()
-        });
+        var ref = users.push();
+        ref.onDisconnect().remove();
+        var update = {};
+        update[ref.key] = {id: connection.getSessionid()};
+        users.update(update);
     }
     init();
     // ------------------------------------------------------------------------
