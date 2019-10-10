@@ -89,9 +89,10 @@
     // ------------------------------------------------------------------------
     // :: File Handler
     // ------------------------------------------------------------------------
-    function FileHandler(filename, arrayBuffer) {
+    function FileHandler(filename, arrayBuffer, progress) {
         this.filename = filename;
         this.arraybuffer = arrayBuffer;
+        this._progress = progress || function(){};
     }
     // ------------------------------------------------------------------------
     FileHandler.prototype.save = function() {
@@ -103,6 +104,9 @@
         URL.revokeObjectURL(link.href);
         document.body.removeChild(link);
     };
+    FileHandler.prototype.progress = function(percent) {
+        this._progress(percent);
+    };
     // ------------------------------------------------------------------------
     FileHandler.prototype.dataURI = function(arraybuffer) {
         var blob = new Blob([new Uint8Array(arraybuffer).buffer]);
@@ -113,19 +117,23 @@
         chunk_size = chunk_size || 256 * 1024;
         var len = this.arraybuffer.byteLength,
             n = len / chunk_size | 0;
+        var chunks = n + (len % n === 0 ? 1 : 0);
         dataChannel.send(JSON.stringify({
             length: len,
+            chunks: chunks,
             filename: this.filename
         }));
-        log('sending total of ' + len + ' bytes in ' + n + ' chunks');
+        log('sending total of ' + len + ' bytes in ' + chunks + ' chunks');
         for (var i = 0; i < n; i++) {
             var start = i * chunk_size,
                 end = (i + 1) * chunk_size;
             log('sending ' + i + ' chunk');
+            this.progress(i * 100 / chunks);
             dataChannel.send(this.arraybuffer.slice(start, end));
         }
         // send the reminder, if any
         if (len % chunk_size) {
+            this.progress(100);
             dataChannel.send(this.arraybuffer.slice(n * chunk_size));
             if (n === 0) {
                 log('sending data');
@@ -135,11 +143,11 @@
         }
     };
     // ------------------------------------------------------------------------
-    FileHandler.fromFile = function(file) {
+    FileHandler.fromFile = function(file, progress) {
         return new Promise(function(resolve, reject) {
             var f = new FileReader();
             f.onload = function(e) {
-                resolve(new FileHandler(file.name, e.target.result));
+                resolve(new FileHandler(file.name, e.target.result, progress));
             };
             f.onerror = function(e) {
                 reject(e);
@@ -191,6 +199,17 @@
         send.innerHTML = message;
     }
     // ------------------------------------------------------------------------
+    function Progress() {
+        this._send = document.querySelector('progress.send');
+        this._recv = document.querySelector('progress.recv');
+    }
+    Progress.prototype.send = function(value) {
+        this._send.value = value;
+    };
+    Progress.prototype.recv = function(value) {
+        this._recv.value = value;
+    };
+    // ------------------------------------------------------------------------
     var dataChannel;
     var pc;
     var users = db_ref.child('users');
@@ -201,6 +220,11 @@
     var ips = new IPSniffer(function(ip) {
         log('IP detected ' + ip);
     });
+    var progress = new Progress();
+    // ------------------------------------------------------------------------
+    connection.on('recv', function(value) {
+        progress.recv(value);
+    });
     // ------------------------------------------------------------------------
 
     connection.on('answer', function(answer) {
@@ -210,6 +234,7 @@
             create_offer();
         }
     });
+    // ------------------------------------------------------------------------
     connection.on('disconnect', function(data) {
         log('Lost connection with ' + data.id);
         offer_sent = false;
@@ -217,10 +242,12 @@
         pc = null;
         ips.reset();
     });
+    // ------------------------------------------------------------------------
     connection.on('ice', function(ice) {
         pc.processIce(ice);
         ips.snoop(ice);
     });
+    // ------------------------------------------------------------------------
     connection.on('offer', function (offer) {
         log('recieve offer');
         pc.handleOffer(offer, function (err) {
@@ -239,6 +266,7 @@
             });
         });
     });
+    // ------------------------------------------------------------------------
     function create_pc(initiator) {
         if (pc) {
             return;
@@ -277,20 +305,24 @@
     }
     // ------------------------------------------------------------------------
     file.addEventListener('change', function(e) {
-        FileHandler.fromFile(e.target.files[0]).then(function(handler) {
+        FileHandler.fromFile(e.target.files[0], function(percent) {
+            progress.send(percent);
+        }).then(function(handler) {
             handler.send(dataChannel);
         });
     });
     // ------------------------------------------------------------------------
     var message_callback = (function() {
         var buf, count, meta;
+        var n;
         return function onmessage(event) {
             console.log(event);
             if (typeof event.data === 'string') {
                 meta = JSON.parse(event.data);
                 buf = window.buf = new Uint8ClampedArray(meta.length);
-                count = 0;
-                log('Expecting a total of ' + buf.byteLength + ' bytes');
+                n = count = 0;
+                file.disable = true;
+                log('Expecting a total of ' + buf.byteLength + ' bytes in ' + meta.chunks + ' chunks');
                 return;
             }
             var data = new Uint8ClampedArray(event.data);
@@ -298,9 +330,14 @@
             var len = (data.byteLength || event.data.size);
             count += len;
             log('receive ' + len + ' data');
+            n += 1;
+            var percent = n * 100 / meta.chunks;
+            connection.emit('recv', percent);
+            progress.recv(percent);
             if (count === buf.byteLength) {
                 // we're done: all data chunks have been received
                 log('Done. downloading.');
+                file.disable = false;
                 new FileHandler(meta.filename, buf.buffer).save();
             }
         };

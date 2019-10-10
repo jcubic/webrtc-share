@@ -72,40 +72,39 @@ $root = preg_replace("|[^/]*$|", "/", $_SERVER['REQUEST_URI']);
     <script>var room = '<?= $_GET['room'] ?>';</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-     div {
-  float: left;
-  position: relative;
-  overflow: hidden;
-  width: 100px;
-  height: 20px;
-}
-div input {
-  right: 0;
-}
-div button, div input {
-  position: absolute;
-  right: 0;
-}
-div button, div input:not([disabled]) {
-  cursor: pointer;
-}
-div input:hover:not([disabled]) + button,
-div input:active:not([disabled]) + button {
-  border-style: inset;
-  border-width: 1px;
-}
+     .send-btn {
+         position: relative;
+         overflow: hidden;
+         width: 100px;
+         height: 20px;
+     }
+     .send-btn input {
+         right: 0;
+     }
+     .send-btn button, .send-btn input {
+         position: absolute;
+         right: 0;
+     }
+     .send-btn button, .send-btn input:not([disabled]) {
+         cursor: pointer;
+     }
+     .send-btn input:hover:not([disabled]) + button,
+     .send-btn input:active:not([disabled]) + button {
+         border-style: inset;
+         border-width: 1px;
+     }
 
-div button {
-  left: 0;
-  pointer-events: none;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-textarea {
-  max-width: calc(100% - 10px);
-}
+     .send-btn button {
+         left: 0;
+         pointer-events: none;
+         z-index: 10;
+         width: 100%;
+         height: 100%;
+         box-sizing: border-box;
+     }
+     textarea {
+         max-width: calc(100% - 10px);
+     }
      #qr {
          max-width: 100%;
      }
@@ -113,18 +112,22 @@ textarea {
   </head>
   <body>
     <h1>Room: <?= $_GET["room"] ?></h1>
-    <div>
+    <div class="send-btn">
       <input type="file" id="file" disabled/>
       <button id="send">waiting...</button>
     </div>
-    <br/>
-    <progress class="send"></progress>
-    <progress class="receive"></progress>
-    <br/>
-    <br/>
-    <textarea cols="120" rows="7"></textarea>
+    <div>
+      <ul>
+        <li><progress max="100" value="0" class="send"></progress></li>
+        <li><progress max="100" value="0" class="recv"></progress></li>
+      </ul>
+    </div>
+    <div class="logs">
+      <textarea cols="120" rows="7"></textarea>
+    </div>
+    <div class="qr-image">
+      <img id="qr" src="<?= qr() ?>"/>
+    </div>
     <script src="<?= $root ?>js/main.js"></script>
-    <br/>
-    <img id="qr" src="<?= qr() ?>"/>
   </body>
 </html>
