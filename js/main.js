@@ -1,4 +1,5 @@
-/*  This file is part of WebRTC Share (send.jcubic.pl)
+/*
+ *  This file is part of WebRTC Share (https://send.jcubic.pl)
  *  Application code for WebRTC/Firebase based P2P file sharing app
  *
  *  Copyright (C) Jakub T. Jankiewicz <https://jcubic.pl>
@@ -117,7 +118,7 @@
         chunk_size = chunk_size || 256 * 1024;
         var len = this.arraybuffer.byteLength,
             n = len / chunk_size | 0;
-        var chunks = n + (len % n === 0 ? 1 : 0);
+        var chunks = n + (len % chunk_size ? 1 : 0);
         dataChannel.send(JSON.stringify({
             length: len,
             chunks: chunks,
@@ -178,7 +179,17 @@
     // ------------------------------------------------------------------------
     // :: Utils
     // ------------------------------------------------------------------------
+    function pad(n, width, z) {
+        // ref: https://stackoverflow.com/a/10073788/387194
+        z = z || '0';
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    }
+    // ------------------------------------------------------------------------
     function log(str) {
+        var date = new Date();
+        var nums = [date.getHours(), date.getMinutes(), date.getSeconds()];
+        var time_str = nums.map((n) => pad(n, 2)).join(':');
         console.log(str);
         if (typeof str !== 'string') {
             str = JSON.stringify(str);
@@ -186,16 +197,18 @@
         if (str == '{}') {
             console.log(new Error().stack);
         }
+        str = '[' + time_str + '] ' + str;
         textarea.value += (str.length > 100 ? str.slice(0, 97) + '...' : str) + '\n';
+        textarea.scrollTop = textarea.scrollHeight;
     }
     // ------------------------------------------------------------------------
     function button(message, enabled) {
-        if (enabled) {
-            file.removeAttribute('disabled');
-        } else {
-            file.addAttribute('disabled', 'disabled');
-        }
         var send = document.getElementById('send');
+        if (enabled) {
+            send.disabled = file.disabled = false;
+        } else {
+            send.disabled = file.disabled = true;
+        }
         send.innerHTML = message;
     }
     // ------------------------------------------------------------------------
@@ -204,10 +217,10 @@
         this._recv = document.querySelector('progress.recv');
     }
     Progress.prototype.send = function(value) {
-        this._send.value = value;
+        this._send.value = Math.floor(value);
     };
     Progress.prototype.recv = function(value) {
-        this._recv.value = value;
+        this._recv.value = Math.floor(value);
     };
     // ------------------------------------------------------------------------
     var dataChannel;
@@ -221,6 +234,11 @@
         log('IP detected ' + ip);
     });
     var progress = new Progress();
+    // ------------------------------------------------------------------------
+    document.querySelector('.send-btn').addEventListener('click', function() {
+        progress.recv(0);
+        progress.send(0);
+    });
     // ------------------------------------------------------------------------
     connection.on('recv', function(value) {
         progress.recv(value);
@@ -305,11 +323,14 @@
     }
     // ------------------------------------------------------------------------
     file.addEventListener('change', function(e) {
-        FileHandler.fromFile(e.target.files[0], function(percent) {
-            progress.send(percent);
-        }).then(function(handler) {
-            handler.send(dataChannel);
-        });
+        // happen on select file (send) + then select and cancel
+        if (e.target.files.length) {
+            FileHandler.fromFile(e.target.files[0], function(percent) {
+                progress.send(percent);
+            }).then(function(handler) {
+                handler.send(dataChannel);
+            });
+        }
     });
     // ------------------------------------------------------------------------
     var message_callback = (function() {
@@ -329,9 +350,9 @@
             buf.set(data, count);
             var len = (data.byteLength || event.data.size);
             count += len;
-            log('receive ' + len + ' data');
             n += 1;
             var percent = n * 100 / meta.chunks;
+            log('receive ' + len + ' data (' + percent + '%)');
             connection.emit('recv', percent);
             progress.recv(percent);
             if (count === buf.byteLength) {

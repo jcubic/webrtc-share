@@ -1,5 +1,6 @@
 <?php
-/*  This file is part of WebRTC Share (send.jcubic.pl)
+/*
+ *  This file is part of WebRTC Share (https://send.jcubic.pl)
  *  Application code for WebRTC/Firebase based P2P file sharing app
  *
  *  Copyright (C) Jakub T. Jankiewicz <https://jcubic.pl>
@@ -59,7 +60,7 @@ function qr() {
 
 require('phpqrcode/qrlib.php');
 
-$root = preg_replace("|[^/]*$|", "/", $_SERVER['REQUEST_URI']);
+$root = preg_replace("|/[^/]+$|", "/", $_SERVER['REQUEST_URI']);
 
 ?><!DOCTYPE html>
 <html>
@@ -71,63 +72,28 @@ $root = preg_replace("|[^/]*$|", "/", $_SERVER['REQUEST_URI']);
     <script src="<?= $root ?>js/rtcpeerconnection.bundle.js"></script>
     <script>var room = '<?= $_GET['room'] ?>';</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-     .send-btn {
-         position: relative;
-         overflow: hidden;
-         width: 100px;
-         height: 20px;
-     }
-     .send-btn input {
-         right: 0;
-     }
-     .send-btn button, .send-btn input {
-         position: absolute;
-         right: 0;
-     }
-     .send-btn button, .send-btn input:not([disabled]) {
-         cursor: pointer;
-     }
-     .send-btn input:hover:not([disabled]) + button,
-     .send-btn input:active:not([disabled]) + button {
-         border-style: inset;
-         border-width: 1px;
-     }
-
-     .send-btn button {
-         left: 0;
-         pointer-events: none;
-         z-index: 10;
-         width: 100%;
-         height: 100%;
-         box-sizing: border-box;
-     }
-     textarea {
-         max-width: calc(100% - 10px);
-     }
-     #qr {
-         max-width: 100%;
-     }
-    </style>
+    <link rel="stylesheet" href="<?= $root ?>css/style.css"/>
   </head>
   <body>
-    <h1>Room: <?= $_GET["room"] ?></h1>
-    <div class="send-btn">
-      <input type="file" id="file" disabled/>
-      <button id="send">waiting...</button>
-    </div>
-    <div>
-      <ul>
-        <li><progress max="100" value="0" class="send"></progress></li>
-        <li><progress max="100" value="0" class="recv"></progress></li>
-      </ul>
-    </div>
-    <div class="logs">
-      <textarea cols="120" rows="7"></textarea>
+    <header>
+      <h1>P2P file transfer</h1>
+      <h2>Room "<?= $_GET["room"] ?>"</h2>
+    </header>
+    <div class="loader">
+      <progress class="send" value="0" max="100"></progress>
+      <progress class="recv" value="0" max="100"></progress>
+      <div class="send-btn">
+        <input type="file" id="file" disabled/>
+        <button id="send" disabled>waiting...</button>
+      </div>
     </div>
     <div class="qr-image">
       <img id="qr" src="<?= qr() ?>"/>
     </div>
+    <details>
+      <summary>Connection Log</summary>
+      <textarea class="log" readonly></textarea>
+    </details>
     <script src="<?= $root ?>js/main.js"></script>
   </body>
 </html>
