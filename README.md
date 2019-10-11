@@ -5,6 +5,6 @@ Application for sharing files using WebRTC
 
 ## License
 
-Released with GNU GPL license
+Released with GNU AGPL 3 license
 
 Copyright (C) 2019 Jakub T. Jankiewicz <[jcubic.pl](https://jcubic.pl)>

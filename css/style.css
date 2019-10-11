@@ -4,19 +4,20 @@
  *
  *  Copyright (C) Jakub T. Jankiewicz <https://jcubic.pl>
  *
- *  WebRTC Share is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
  *
- *  Foobar is distributed in the hope that it will be useful,
+ *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  GNU Affero General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * MIT licensed POC can be found at https://codepen.io/jcubic/pen/yvMeRg
+ *  MIT licensed POC can be found at https://codepen.io/jcubic/pen/yvMeRg
  *
  */
 body {
@@ -159,6 +160,31 @@ details[open] summary::before {
 /* QR code */
 #qr {
     max-width: 100%;
+}
+/* new room button */
+.new-btn {
+    box-shadow:inset 0px 1px 0px 0px #caefab;
+    background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+    background-color:#77d42a;
+    border-radius:6px;
+    border:1px solid #268a16;
+    display:inline-block;
+    cursor:pointer;
+    color:#306108;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:7px 20px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #aade7c;
+}
+.new-btn:hover {
+    background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+    background-color:#5cb811;
+}
+.new-btn:active {
+    position:relative;
+    top:1px;
 }
 /* progress bar */
 .loader {
