@@ -42,7 +42,7 @@ function generate_name() {
     $adjectives = explode("\n", file_get_contents("adjectives.txt"));
     $i = array_rand($nouns);
     $j = array_rand($adjectives);
-    return strtolower($nouns[$i] . "-" . $adjectives[$j]);
+    return strtolower($adjectives[$j] . '-' . $nouns[$i]);
 }
 
 function self_url() {
