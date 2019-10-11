@@ -51,8 +51,12 @@ function generate_name() {
 }
 
 function self_url() {
+    return origin() . strtok($_SERVER[REQUEST_URI], '?');
+}
+
+function origin() {
     $protocol = (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] === "on" ? "https" : "http");
-    return "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    return "$protocol://$_SERVER[HTTP_HOST]";
 }
 
 function qr() {
@@ -67,24 +71,26 @@ require('phpqrcode/qrlib.php');
 
 $root = preg_replace("|/[^/]+$|", "/", $_SERVER['REQUEST_URI']);
 
+$origin = origin();
+
 ?><!DOCTYPE html>
 <html>
   <head>
     <title>P2P File Share (<?= $_GET["room"] ?>)</title>
     <meta name="description" content="Web application for sharing files between computers. Work on Mobile and Desktop."/>
     <link rel="shortcut icon" href="<?= $root ?>favicon.ico">
-    <link rel="canonical" href="/"/>
+    <link rel="canonical" href="<?= $origin . $root ?>"/>
     <!-- share meta tags -->
     <!-- Facebook -->
     <meta property="og:locale" content="en_EN"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="P2P File Share"/>
     <meta property="og:description" content="Web application for sharing files between computers. Work on Mobile and Desktop."/>
-    <meta property="og:url" content="<?= $root ?>"/>
+    <meta property="og:url" content="<?= $origin . $root ?>"/>
     <meta property="og:site_name" content="P2P File Share"/>
-    <meta property="og:image" content="<?= $root ?>img/cover.png"/>
+    <meta property="og:image" content="<?= $origin .$root ?>img/cover.png"/>
     <!-- twitter -->
-    <meta name="twitter:image" content="<?= $root ?>img/cover.png"/>
+    <meta name="twitter:image" content="<?= $origin . $root ?>img/cover.png"/>
     <meta name="twitter:image:alt" content="Vector illustration with computers, file icon and arrows"/>
     <meta name="twitter:title" content="P2P File Share"/>
     <meta name="twitter:description" content="Web application for sharing files between computers. Work on Mobile and Desktop."/>
