@@ -40,6 +40,7 @@
             }
         ]
     };
+    const message_channel = 'WebRTC';
     firebase.initializeApp(config);
     var db_ref = firebase.database().ref('send/' + room);
     // ------------------------------------------------------------------------
@@ -48,6 +49,7 @@
     function FirebaseConnection() {
         this.randId = Math.floor(Math.random() * 1000000000);
         log('Client ID: ' + this.randId);
+        this.cleanup();
         this.connection = this.connect();
         this.connection.onDisconnect().set([{
             type: 'disconnect',
@@ -57,8 +59,8 @@
     }
     // ------------------------------------------------------------------------
     FirebaseConnection.prototype.connect = function(room) {
-        db_ref.child('webRTC').remove();
-        return db_ref.child('webRTC');
+        db_ref.child(message_channel).remove();
+        return db_ref.child(message_channel);
     };
     // ------------------------------------------------------------------------
     FirebaseConnection.prototype.on = function (type, fn) {
@@ -86,7 +88,25 @@
     };
     // ------------------------------------------------------------------------
     FirebaseConnection.prototype.disconnect = function () {};
-
+    // ------------------------------------------------------------------------
+    FirebaseConnection.prototype.cleanup = function() {
+        firebase.database().ref('/send').once("value", snap => {
+            const list = [];
+            snap.forEach(x => {
+                const value = x.val();
+                const messages = value[message_channel];
+                if (messages && messages.length === 1) {
+                    const { type } = messages[0];
+                    if (type === 'disconnect') {
+                        list.push(x.key);
+                    }
+                }
+            });
+            list.forEach(name => {
+                firebase.database().ref(`/send/${name}`).remove();
+            });
+        });
+    };
     // ------------------------------------------------------------------------
     // :: File Handler
     // ------------------------------------------------------------------------
