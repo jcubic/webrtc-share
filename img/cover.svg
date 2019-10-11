@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg8" version="1.1" viewBox="0 0 423.33334 234.16484" height="234.16484mm" width="423.33334mm">
+  <defs id="defs2">
+    <linearGradient id="linearGradient3424">
+      <stop id="stop3420" offset="0" style="stop-color:#953173;stop-opacity:1" />
+      <stop id="stop3422" offset="1" style="stop-color:#012f29;stop-opacity:1" />
+    </linearGradient>
+    <style type="text/css" id="style902">
+    .fil106 {fill:url(#il);fill-rule:nonzero}
+    .fil213 {fill:url(#im);fill-rule:nonzero}
+    .fil88 {fill:url(#mx);fill-rule:nonzero}
+    .fil86 {fill:url(#ol);fill-rule:nonzero}
+    .fil223 {fill:url(#ow);fill-rule:nonzero}
+    .fil74 {fill:url(#ph);fill-rule:nonzero}
+    .fil180 {fill:url(#pt);fill-rule:nonzero}
+    .fil51 {fill:url(#qe);fill-rule:nonzero}
+    .fil52 {fill:url(#hx);fill-rule:nonzero}
+    .fil136 {fill:url(#ii);fill-rule:nonzero}
+    .fil66 {fill:url(#in);fill-rule:nonzero}
+    .fil21 {fill:url(#iy);fill-rule:nonzero}
+    .fil197 {fill:url(#jk);fill-rule:nonzero}
+    .fil36 {fill:url(#jv);fill-rule:nonzero}
+    .fil157 {fill:url(#kh);fill-rule:nonzero}
+    .fil95 {fill:url(#ks);fill-rule:nonzero}
+    .fil158 {fill:url(#ld);fill-rule:nonzero}
+    .fil175 {fill:url(#lp);fill-rule:nonzero}
+    .fil177 {fill:url(#ma);fill-rule:nonzero}
+    .fil159 {fill:url(#mm);fill-rule:nonzero}
+    .fil96 {fill:url(#my);fill-rule:nonzero}
+    .fil78 {fill:url(#nk);fill-rule:nonzero}
+    .fil97 {fill:url(#nv);fill-rule:nonzero}
+    .fil48 {fill:url(#od);fill-rule:nonzero}
+    .fil134 {fill:url(#oe);fill-rule:nonzero}
+    .fil135 {fill:url(#of);fill-rule:nonzero}
+    .fil126 {fill:url(#og);fill-rule:nonzero}
+    .fil101 {fill:url(#oh);fill-rule:nonzero}
+    .fil170 {fill:url(#oi);fill-rule:nonzero}
+    .fil171 {fill:url(#ok);fill-rule:nonzero}
+    .fil70 {fill:url(#om);fill-rule:nonzero}
+    .fil69 {fill:url(#on);fill-rule:nonzero}
+    .fil0 {fill:url(#oo);fill-rule:nonzero}
+    .fil104 {fill:url(#op);fill-rule:nonzero}
+    .fil105 {fill:url(#oq);fill-rule:nonzero}
+    .fil164 {fill:url(#or);fill-rule:nonzero}
+    .fil176 {fill:url(#os);fill-rule:nonzero}
+    .fil125 {fill:url(#ot);fill-rule:nonzero}
+    .fil200 {fill:url(#ou);fill-rule:nonzero}
+    .fil25 {fill:url(#ov);fill-rule:nonzero}
+    .fil166 {fill:url(#ox);fill-rule:nonzero}
+    .fil165 {fill:url(#oy);fill-rule:nonzero}
+    .fil215 {fill:url(#oz);fill-rule:nonzero}
+    .fil172 {fill:url(#pa);fill-rule:nonzero}
+    .fil190 {fill:url(#pb);fill-rule:nonzero}
+    .fil116 {fill:url(#pc);fill-rule:nonzero}
+    .fil184 {fill:url(#pd);fill-rule:nonzero}
+    .fil117 {fill:url(#pe);fill-rule:nonzero}
+    .fil162 {fill:url(#pf);fill-rule:nonzero}
+    .fil225 {fill:url(#pg);fill-rule:nonzero}
+    .fil168 {fill:url(#pi);fill-rule:nonzero}
+    .fil167 {fill:url(#pj);fill-rule:nonzero}
+    .fil133 {fill:url(#pl);fill-rule:nonzero}
+    .fil173 {fill:url(#pm);fill-rule:nonzero}
+    .fil109 {fill:url(#pn);fill-rule:nonzero}
+    .fil118 {fill:url(#po);fill-rule:nonzero}
+    .fil151 {fill:url(#pp);fill-rule:nonzero}
+    .fil187 {fill:url(#pq);fill-rule:nonzero}
+    .fil55 {fill:url(#pr);fill-rule:nonzero}
+    .fil205 {fill:url(#ps);fill-rule:nonzero}
+    .fil71 {fill:url(#pu);fill-rule:nonzero}
+    .fil18 {fill:url(#pv);fill-rule:nonzero}
+    .fil220 {fill:url(#pw);fill-rule:nonzero}
+    .fil206 {fill:url(#px);fill-rule:nonzero}
+    .fil214 {fill:url(#py);fill-rule:nonzero}
+    .fil218 {fill:url(#pz);fill-rule:nonzero}
+    .fil146 {fill:url(#qa);fill-rule:nonzero}
+    .fil149 {fill:url(#qb);fill-rule:nonzero}
+    .fil143 {fill:url(#qc);fill-rule:nonzero}
+    .fil219 {fill:url(#qd);fill-rule:nonzero}
+    .fil123 {fill:url(#qf);fill-rule:nonzero}
+    .fil53 {fill:url(#qg);fill-rule:nonzero}
+    .fil204 {fill:url(#qh);fill-rule:nonzero}
+    .fil192 {fill:url(#qi);fill-rule:nonzero}
+    .fil6 {fill:url(#qj);fill-rule:nonzero}
+    .fil152 {fill:url(#qk);fill-rule:nonzero}
+    .fil216 {fill:url(#ht);fill-rule:nonzero}
+    .fil169 {fill:url(#hu);fill-rule:nonzero}
+    .fil195 {fill:url(#hv);fill-rule:nonzero}
+    .fil75 {fill:url(#hw);fill-rule:nonzero}
+    .fil174 {fill:url(#hy);fill-rule:nonzero}
+    .fil140 {fill:url(#hz);fill-rule:nonzero}
+    .fil139 {fill:url(#ia);fill-rule:nonzero}
+    .fil141 {fill:url(#ib);fill-rule:nonzero}
+    .fil179 {fill:url(#ic);fill-rule:nonzero}
+    .fil122 {fill:url(#id);fill-rule:nonzero}
+    .fil45 {fill:url(#ie);fill-rule:nonzero}
+    .fil160 {fill:url(#if);fill-rule:nonzero}
+    .fil102 {fill:url(#ig);fill-rule:nonzero}
+    .fil113 {fill:url(#ih);fill-rule:nonzero}
+    .fil5 {fill:url(#ij);fill-rule:nonzero}
+    .fil221 {fill:url(#ik);fill-rule:nonzero}
+    .fil85 {fill:url(#je);fill-rule:nonzero}
+    .fil137 {fill:url(#kf);fill-rule:nonzero}
+    .fil203 {fill:url(#lg);fill-rule:nonzero}
+    .fil130 {fill:url(#mh);fill-rule:nonzero}
+    .fil209 {fill:url(#ni);fill-rule:nonzero}
+    .fil11 {fill:url(#oj);fill-rule:nonzero}
+    .fil132 {fill:url(#pk);fill-rule:nonzero}
+    .fil4 {fill:url(#ql);fill-rule:nonzero}
+    .fil24 {fill:url(#io);fill-rule:nonzero}
+    .fil178 {fill:url(#ip);fill-rule:nonzero}
+    .fil138 {fill:url(#iq);fill-rule:nonzero}
+    .fil2 {fill:url(#ir);fill-rule:nonzero}
+    .fil3 {fill:url(#is);fill-rule:nonzero}
+    .fil163 {fill:url(#it);fill-rule:nonzero}
+    .fil82 {fill:url(#iu);fill-rule:nonzero}
+    .fil1 {fill:url(#iv);fill-rule:nonzero}
+    .fil207 {fill:url(#iw);fill-rule:nonzero}
+    .fil62 {fill:url(#ix);fill-rule:nonzero}
+    .fil73 {fill:url(#iz);fill-rule:nonzero}
+    .fil12 {fill:url(#ja);fill-rule:nonzero}
+    .fil40 {fill:url(#jb);fill-rule:nonzero}
+    .fil10 {fill:url(#jc);fill-rule:nonzero}
+    .fil20 {fill:url(#jd);fill-rule:nonzero}
+    .fil39 {fill:url(#jf);fill-rule:nonzero}
+    .fil49 {fill:url(#jg);fill-rule:nonzero}
+    .fil142 {fill:url(#jh);fill-rule:nonzero}
+    .fil121 {fill:url(#ji);fill-rule:nonzero}
+    .fil65 {fill:url(#jj);fill-rule:nonzero}
+    .fil153 {fill:url(#jl);fill-rule:nonzero}
+    .fil98 {fill:url(#jm);fill-rule:nonzero}
+    .fil34 {fill:url(#jn);fill-rule:nonzero}
+    .fil16 {fill:url(#jo);fill-rule:nonzero}
+    .fil186 {fill:url(#jp);fill-rule:nonzero}
+    .fil57 {fill:url(#jq);fill-rule:nonzero}
+    .fil183 {fill:url(#jr);fill-rule:nonzero}
+    .fil208 {fill:url(#js);fill-rule:nonzero}
+    .fil154 {fill:url(#jt);fill-rule:nonzero}
+    .fil224 {fill:url(#ju);fill-rule:nonzero}
+    .fil44 {fill:url(#jw);fill-rule:nonzero}
+    .fil222 {fill:url(#jx);fill-rule:nonzero}
+    .fil83 {fill:url(#jy);fill-rule:nonzero}
+    .fil90 {fill:url(#jz);fill-rule:nonzero}
+    .fil22 {fill:url(#ka);fill-rule:nonzero}
+    .fil198 {fill:url(#kb);fill-rule:nonzero}
+    .fil38 {fill:url(#kc);fill-rule:nonzero}
+    .fil199 {fill:url(#kd);fill-rule:nonzero}
+    .fil23 {fill:url(#ke);fill-rule:nonzero}
+    .fil64 {fill:url(#kg);fill-rule:nonzero}
+    .fil115 {fill:url(#ki);fill-rule:nonzero}
+    .fil91 {fill:url(#kj);fill-rule:nonzero}
+    .fil15 {fill:url(#kk);fill-rule:nonzero}
+    .fil212 {fill:url(#kl);fill-rule:nonzero}
+    .fil84 {fill:url(#km);fill-rule:nonzero}
+    .fil196 {fill:url(#kn);fill-rule:nonzero}
+    .fil14 {fill:url(#ko);fill-rule:nonzero}
+    .fil58 {fill:url(#kp);fill-rule:nonzero}
+    .fil99 {fill:url(#kq);fill-rule:nonzero}
+    .fil144 {fill:url(#kr);fill-rule:nonzero}
+    .fil47 {fill:url(#kt);fill-rule:nonzero}
+    .fil17 {fill:url(#ku);fill-rule:nonzero}
+    .fil217 {fill:url(#kv);fill-rule:nonzero}
+    .fil127 {fill:url(#kw);fill-rule:nonzero}
+    .fil201 {fill:url(#kx);fill-rule:nonzero}
+    .fil124 {fill:url(#ky);fill-rule:nonzero}
+    .fil161 {fill:url(#kz);fill-rule:nonzero}
+    .fil94 {fill:url(#la);fill-rule:nonzero}
+    .fil191 {fill:url(#lb);fill-rule:nonzero}
+    .fil202 {fill:url(#lc);fill-rule:nonzero}
+    .fil147 {fill:url(#le);fill-rule:nonzero}
+    .fil148 {fill:url(#lf);fill-rule:nonzero}
+    .fil54 {fill:url(#lh);fill-rule:nonzero}
+    .fil211 {fill:url(#li);fill-rule:nonzero}
+    .fil210 {fill:url(#lj);fill-rule:nonzero}
+    .fil111 {fill:url(#lk);fill-rule:nonzero}
+    .fil92 {fill:url(#ll);fill-rule:nonzero}
+    .fil107 {fill:url(#lm);fill-rule:nonzero}
+    .fil194 {fill:url(#ln);fill-rule:nonzero}
+    .fil67 {fill:url(#lo);fill-rule:nonzero}
+    .fil193 {fill:url(#lq);fill-rule:nonzero}
+    .fil110 {fill:url(#lr);fill-rule:nonzero}
+    .fil35 {fill:url(#ls);fill-rule:nonzero}
+    .fil145 {fill:url(#lt);fill-rule:nonzero}
+    .fil150 {fill:url(#lu);fill-rule:nonzero}
+    .fil9 {fill:url(#lv);fill-rule:nonzero}
+    .fil188 {fill:url(#lw);fill-rule:nonzero}
+    .fil189 {fill:url(#lx);fill-rule:nonzero}
+    .fil59 {fill:url(#ly);fill-rule:nonzero}
+    .fil8 {fill:url(#lz);fill-rule:nonzero}
+    .fil37 {fill:url(#mb);fill-rule:nonzero}
+    .fil50 {fill:url(#mc);fill-rule:nonzero}
+    .fil68 {fill:url(#md);fill-rule:nonzero}
+    .fil87 {fill:url(#me);fill-rule:nonzero}
+    .fil63 {fill:url(#mf);fill-rule:nonzero}
+    .fil108 {fill:url(#mg);fill-rule:nonzero}
+    .fil80 {fill:url(#mi);fill-rule:nonzero}
+    .fil81 {fill:url(#mj);fill-rule:nonzero}
+    .fil181 {fill:url(#mk);fill-rule:nonzero}
+    .fil114 {fill:url(#ml);fill-rule:nonzero}
+    .fil43 {fill:url(#mn);fill-rule:nonzero}
+    .fil185 {fill:url(#mo);fill-rule:nonzero}
+    .fil61 {fill:url(#mp);fill-rule:nonzero}
+    .fil156 {fill:url(#mq);fill-rule:nonzero}
+    .fil26 {fill:url(#mr);fill-rule:nonzero}
+    .fil32 {fill:url(#ms);fill-rule:nonzero}
+    .fil31 {fill:url(#mt);fill-rule:nonzero}
+    .fil226 {fill:url(#mu);fill-rule:nonzero}
+    .fil7 {fill:url(#mv);fill-rule:nonzero}
+    .fil19 {fill:url(#mw);fill-rule:nonzero}
+    .fil30 {fill:url(#mz);fill-rule:nonzero}
+    .fil79 {fill:url(#na);fill-rule:nonzero}
+    .fil46 {fill:url(#nb);fill-rule:nonzero}
+    .fil131 {fill:url(#nc);fill-rule:nonzero}
+    .fil56 {fill:url(#nd);fill-rule:nonzero}
+    .fil72 {fill:url(#ne);fill-rule:nonzero}
+    .fil77 {fill:url(#nf);fill-rule:nonzero}
+    .fil129 {fill:url(#ng);fill-rule:nonzero}
+    .fil100 {fill:url(#nh);fill-rule:nonzero}
+    .fil33 {fill:url(#nj);fill-rule:nonzero}
+    .fil29 {fill:url(#nl);fill-rule:nonzero}
+    .fil120 {fill:url(#nm);fill-rule:nonzero}
+    .fil76 {fill:url(#nn);fill-rule:nonzero}
+    .fil103 {fill:url(#no);fill-rule:nonzero}
+    .fil27 {fill:url(#np);fill-rule:nonzero}
+    .fil128 {fill:url(#nq);fill-rule:nonzero}
+    .fil28 {fill:url(#nr);fill-rule:nonzero}
+    .fil112 {fill:url(#ns);fill-rule:nonzero}
+    .fil182 {fill:url(#nt);fill-rule:nonzero}
+    .fil60 {fill:url(#nu);fill-rule:nonzero}
+    .fil155 {fill:url(#nw);fill-rule:nonzero}
+    .fil119 {fill:url(#nx);fill-rule:nonzero}
+    .fil89 {fill:url(#ny);fill-rule:nonzero}
+    .fil41 {fill:url(#nz);fill-rule:nonzero}
+    .fil42 {fill:url(#oa);fill-rule:nonzero}
+    .fil13 {fill:url(#ob);fill-rule:nonzero}
+    .fil93 {fill:url(#oc);fill-rule:nonzero}
+  </style>
+    <linearGradient gradientTransform="matrix(0.42947918,0,0,0.36874476,29.081167,49.238485)" gradientUnits="userSpaceOnUse" y2="421.01306" x2="540.95349" y1="-177.67067" x1="-406.24966" id="linearGradient3426" xlink:href="#linearGradient3424" />
+  </defs>
+  <metadata id="metadata5">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g transform="translate(145.39461,16.276651)" id="layer1">
+    <g id="g3485">
+      <rect style="opacity:1;vector-effect:none;fill:url(#linearGradient3426);fill-opacity:1;stroke:none;stroke-width:7.95910072;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect3418" width="423.33334" height="234.16484" x="-145.39461" y="-16.276651" />
+      <g id="g3467" transform="matrix(0.42947918,0,0,0.42947918,23.757207,58.192615)">
+        <path d="m 66.193005,46.065419 c -3.207299,0 -5.760962,2.585144 -5.760962,5.792442 v 94.725329 c 0,3.20729 2.553663,5.79246 5.760962,5.79246 h 70.327815 c 3.20729,0 5.76096,-2.58517 5.76096,-5.79246 V 75.405382 h -21.18649 c -4.3379,0 -8.12201,-3.16426 -8.12201,-7.36644 V 46.065419 Z m 50.809795,0 v 21.973523 c 0,1.72678 1.64402,3.33693 4.09249,3.33693 h 21.18649 z M 73.05579,85.919932 h 34.75465 c 0.9863,0 1.76293,0.80813 1.76293,1.79439 v 2.64438 c 0,0.98632 -0.77663,1.79441 -1.76293,1.79441 H 73.05579 c -0.986299,0 -1.762919,-0.80809 -1.762919,-1.79441 v -2.64438 c 0,-0.98626 0.77662,-1.79439 1.762919,-1.79439 z m 0,14.512608 h 56.57076 c 0.98629,0 1.7944,0.80809 1.7944,1.79437 v 2.67585 c 0,0.98632 -0.80811,1.76295 -1.7944,1.76295 H 73.05579 c -0.986299,0 -1.762919,-0.77663 -1.762919,-1.76295 v -2.67585 c 0,-0.98628 0.77662,-1.79437 1.762919,-1.79437 z m 0,14.54406 h 56.57076 c 0.98629,0 1.7944,0.77661 1.7944,1.76291 v 2.67586 c 0,0.98628 -0.80811,1.79441 -1.7944,1.79441 H 73.05579 c -0.986299,0 -1.762919,-0.80813 -1.762919,-1.79441 v -2.67586 c 0,-0.9863 0.77662,-1.76291 1.762919,-1.76291 z m 0,14.51257 h 56.57076 c 0.98629,0 1.7944,0.77664 1.7944,1.76292 v 2.67586 c 0,0.98632 -0.80811,1.79439 -1.7944,1.79439 H 73.05579 c -0.986299,0 -1.762919,-0.80807 -1.762919,-1.79439 v -2.67586 c 0,-0.98628 0.77662,-1.76292 1.762919,-1.76292 z" style="fill:#ffffff;stroke-width:1.0073812" id="path843" />
+        <g style="fill:#ffffff" transform="matrix(8.428869,0,0,8.428869,248.92247,-1.9258909)" id="g840">
+          <path style="fill:#ffffff" d="M 18.69,3 H 5.31 A 1.31,1.31 0 0 0 4,4.31 V 15 H 20 V 4.31 A 1.31,1.31 0 0 0 18.69,3 Z M 18,12 H 6 V 5 h 12 z" id="path826" />
+          <path style="fill:#ffffff" d="M 21.85,19.47 C 21.67,19.19 20,16 20,16 H 4 c 0,0 -1.64,3.17 -1.82,3.43 A 1,1 0 0 0 2,20 1,1 0 0 0 3,21 h 18 a 1,1 0 0 0 1,-1 1.08,1.08 0 0 0 -0.15,-0.53 z M 14.5,19 h -5 a 0.5,0.5 0 0 1 0,-1 h 5 a 0.5,0.5 0 0 1 0,1 z" id="path828" />
+        </g>
+        <g style="fill:#ffffff" id="g854" transform="matrix(8.428869,0,0,8.428869,-253.23202,-1.9258909)">
+          <path style="fill:#ffffff" id="path850" d="M 18.69,3 H 5.31 A 1.31,1.31 0 0 0 4,4.31 V 15 H 20 V 4.31 A 1.31,1.31 0 0 0 18.69,3 Z M 18,12 H 6 V 5 h 12 z" />
+          <path style="fill:#ffffff" id="path852" d="M 21.85,19.47 C 21.67,19.19 20,16 20,16 H 4 c 0,0 -1.64,3.17 -1.82,3.43 A 1,1 0 0 0 2,20 1,1 0 0 0 3,21 h 18 a 1,1 0 0 0 1,-1 1.08,1.08 0 0 0 -0.15,-0.53 z M 14.5,19 h -5 a 0.5,0.5 0 0 1 0,-1 h 5 a 0.5,0.5 0 0 1 0,1 z" />
+        </g>
+        <g transform="translate(0,-10.443537)" id="g3434">
+          <g id="g898" transform="translate(305.8181,-4.2562975)" style="fill:#012f29;fill-opacity:1">
+            <rect y="-18.91258" x="-328.74152" height="24.054256" width="214.35017" id="rect888" style="opacity:1;vector-effect:none;fill:#007666;fill-opacity:1;stroke:none;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+            <path d="m -80.180866,-6.8854523 -56.928414,32.8676333 0,-65.735267 z" id="path890" style="opacity:1;vector-effect:none;fill:#007666;fill-opacity:1;stroke:none;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          </g>
+          <g transform="matrix(-1,0,0,1,-103.10428,237.35535)" id="g3416" style="fill:#923172;fill-opacity:1">
+            <rect style="opacity:1;vector-effect:none;fill:#a25588;fill-opacity:1;stroke:none;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect3412" width="214.35017" height="24.054256" x="-328.74152" y="-18.91258" />
+            <path style="opacity:1;vector-effect:none;fill:#a25588;fill-opacity:1;stroke:none;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="path3414" d="m -80.180866,-6.8854523 -56.928414,32.8676333 0,-65.735267 z" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
