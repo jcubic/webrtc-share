@@ -276,6 +276,7 @@
     // ------------------------------------------------------------------------
     connection.on('disconnect', function(data) {
         log('Lost connection with ' + data.id);
+        button('waiting...', false);
         offer_sent = false;
         dataChannel = null;
         pc = null;
