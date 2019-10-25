@@ -79,7 +79,7 @@
         var msg = this.connection.push({
             type: type,
             sender: this.getSessionid(),
-            data: JSON.stringify(data)
+            data: typeof data === 'undefined' ? true : JSON.stringify(data)
         });
         msg.remove();
     };
@@ -266,7 +266,10 @@
         log('peer receive chunk (' + Math.round(value) + '%)');
     });
     // ------------------------------------------------------------------------
-
+    connection.on('done', function() {
+        log('peer download done');
+    });
+    // ------------------------------------------------------------------------
     connection.on('answer', function(answer) {
         log('receive answer');
         pc.handleAnswer(answer);
@@ -381,6 +384,7 @@
             if (count === buf.byteLength) {
                 // we're done: all data chunks have been received
                 log('Done. downloading.');
+                connection.emit('done');
                 file.disable = false;
                 new FileHandler(meta.filename, buf.buffer).save();
             }
