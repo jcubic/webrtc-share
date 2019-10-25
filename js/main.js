@@ -64,31 +64,37 @@
         return db_ref.child(message_channel);
     };
     // ------------------------------------------------------------------------
-    FirebaseConnection.prototype.on = function (type, fn) {
+    FirebaseConnection.prototype.on = function(type, fn) {
         var id = this.getSessionid();
         this.connection.on('child_added', function(snapshot) {
             var message = snapshot.val();
+            var data;
             if (message.type == type && message.sender != id) {
-                var data = JSON.parse(message.data);
+                if (typeof message.data !== 'undefined') {
+                    data = JSON.parse(message.data);
+                }
                 fn(data);
             }
         });
     };
     // ------------------------------------------------------------------------
-    FirebaseConnection.prototype.emit = function (type, data) {
-        var msg = this.connection.push({
+    FirebaseConnection.prototype.emit = function(type, data) {
+        var payload = {
             type: type,
-            sender: this.getSessionid(),
-            data: typeof data === 'undefined' ? true : JSON.stringify(data)
-        });
+            sender: this.getSessionid()
+        };
+        if (typeof data !== 'undefined') {
+            payload.data = JSON.stringify(data);
+        }
+        var msg = this.connection.push(payload);
         msg.remove();
     };
     // ------------------------------------------------------------------------
-    FirebaseConnection.prototype.getSessionid = function () {
+    FirebaseConnection.prototype.getSessionid = function() {
         return this.randId;
     };
     // ------------------------------------------------------------------------
-    FirebaseConnection.prototype.disconnect = function () {};
+    FirebaseConnection.prototype.disconnect = function() {};
     // ------------------------------------------------------------------------
     FirebaseConnection.prototype.cleanup = function() {
         firebase.database().ref('/send').once("value", snap => {
