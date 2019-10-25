@@ -263,6 +263,7 @@
     // ------------------------------------------------------------------------
     connection.on('recv', function(value) {
         progress.recv(value);
+        log('peer receive chunk (' + Math.round(value) + '%)');
     });
     // ------------------------------------------------------------------------
 
@@ -374,7 +375,7 @@
             count += len;
             n += 1;
             var percent = n * 100 / meta.chunks;
-            log('receive ' + len + ' data (' + percent + '%)');
+            log('receive ' + len + ' data (' + Math.round(percent) + '%)');
             connection.emit('recv', percent);
             progress.recv(percent);
             if (count === buf.byteLength) {
