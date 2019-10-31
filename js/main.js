@@ -151,8 +151,8 @@
             chunks: chunks,
             filename: this.filename
         }));
-        log('prepare file ' + this.filename);
-        log('sending total of ' + len + ' bytes in ' + chunks + ' chunks');
+        log('prepare file `' + this.filename + '`');
+        log('sending total of ' + formatBytes(len) + ' in ' + chunks + ' chunks');
         for (var i = 0; i < n; i++) {
             var start = i * chunk_size,
                 end = (i + 1) * chunk_size;
@@ -228,6 +228,15 @@
         str = '[' + time_str + '] ' + str;
         textarea.value += (str.length > 100 ? str.slice(0, 97) + '...' : str) + '\n';
         textarea.scrollTop = textarea.scrollHeight;
+    }
+    // ------------------------------------------------------------------------
+    function formatBytes(bytes, decimals) {
+        if(bytes == 0) return '0 Bytes';
+        var k = 1024,
+            dm = decimals <= 0 ? 0 : decimals || 2,
+            sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+            i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
     // ------------------------------------------------------------------------
     function button(message, enabled) {
@@ -391,8 +400,8 @@
                 buf = window.buf = new Uint8ClampedArray(meta.length);
                 n = count = 0;
                 file.disable = true;
-                log('receiving file ' + meta.filename);
-                log('expecting a total of ' + buf.byteLength + ' bytes in ' + meta.chunks + ' chunks');
+                log('receiving file `' + meta.filename + '`');
+                log('expecting a total of ' + formatBytes(buf.byteLength) + ' in ' + meta.chunks + ' chunks');
                 return;
             }
             var data = new Uint8ClampedArray(event.data);
