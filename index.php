@@ -67,6 +67,14 @@ function qr() {
     return $img;
 }
 
+function hash36($filename) {
+    $str = file_get_contents($filename);
+    $arr = unpack("C*", pack("L", crc32($str)));
+    return implode(array_map(function($number) {
+        return base_convert($number, 10, 36);
+    }, $arr));
+}
+
 require('phpqrcode/qrlib.php');
 
 $root = preg_replace("|/[^/]+$|", "/", $_SERVER['REQUEST_URI']);
@@ -128,6 +136,6 @@ $origin = origin();
       <summary>Connection Log</summary>
       <textarea class="log" readonly></textarea>
     </details>
-    <script src="<?= $root ?>js/main.js"></script>
+    <script src="<?= $root ?>js/main.js?<?= hash36("js/main.js") ?>"></script>
   </body>
 </html>

@@ -151,6 +151,7 @@
             chunks: chunks,
             filename: this.filename
         }));
+        log('prepare file ' + this.filename);
         log('sending total of ' + len + ' bytes in ' + chunks + ' chunks');
         for (var i = 0; i < n; i++) {
             var start = i * chunk_size,
@@ -393,7 +394,8 @@
                 buf = window.buf = new Uint8ClampedArray(meta.length);
                 n = count = 0;
                 file.disable = true;
-                log('Expecting a total of ' + buf.byteLength + ' bytes in ' + meta.chunks + ' chunks');
+                log('receiving file ' + meta.filename);
+                log('expecting a total of ' + buf.byteLength + ' bytes in ' + meta.chunks + ' chunks');
                 return;
             }
             var data = new Uint8ClampedArray(event.data);
