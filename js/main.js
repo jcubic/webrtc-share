@@ -250,6 +250,21 @@
         this._recv.value = Math.floor(value);
     };
     // ------------------------------------------------------------------------
+    function disconnect() {
+        offer_sent = false;
+        dataChannel = null;
+        pc = null;
+        ips.reset();
+    }
+    // ------------------------------------------------------------------------
+    function onInternetConnection() {
+        if(navigator.onLine) {
+            init();
+        } else {
+            disconnect();
+        }
+    }
+    // ------------------------------------------------------------------------
     var dataChannel;
     var pc;
     var users = db_ref.child('users');
@@ -292,6 +307,9 @@
         pc = null;
         ips.reset();
     });
+    // ------------------------------------------------------------------------
+    window.addEventListener('online',  onInternetConnection);
+    window.addEventListener('offline', onInternetConnection);
     // ------------------------------------------------------------------------
     connection.on('ice', function(ice) {
         pc.processIce(ice);
@@ -416,22 +434,22 @@
         var update = {};
         update[ref.key] = {id: connection.getSessionid()};
         users.update(update);
+        users.once('value', function(snapshot) {
+            var data = snapshot.val();
+            console.log(data);
+            console.log(JSON.stringify(data));
+            if (data) {
+                if (Object.keys(data).length == 2) {
+                    create_pc(false);
+                }
+            }
+        });
     }
     init();
     // ------------------------------------------------------------------------
-    users.once('value', function(snapshot) {
-        var data = snapshot.val();
-        console.log(data);
-        console.log(JSON.stringify(data));
-        if (data) {
-            if (Object.keys(data).length == 2) {
-                create_pc(false);
-            }
-        }
-    });
-    // ------------------------------------------------------------------------
     users.limitToLast(1).on('child_added', function(snapshot) {
         var data = snapshot.val();
+        console.log(data);
         if (data.id != connection.getSessionid()) {
             create_pc(true);
             create_offer();
