@@ -43,8 +43,8 @@ function is_facebook() {
 }
 
 function generate_name() {
-    $nouns = explode("\n", file_get_contents("nouns.txt"));
-    $adjectives = explode("\n", file_get_contents("adjectives.txt"));
+    $nouns = explode("\n", file_get_contents("dict/nouns.txt"));
+    $adjectives = explode("\n", file_get_contents("dict/adjectives.txt"));
     $i = array_rand($nouns);
     $j = array_rand($adjectives);
     return strtolower($adjectives[$j] . '-' . $nouns[$i]);

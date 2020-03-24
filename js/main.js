@@ -402,6 +402,7 @@
                 file.disable = true;
                 log('receiving file `' + meta.filename + '`');
                 log('expecting a total of ' + formatBytes(buf.byteLength) + ' in ' + meta.chunks + ' chunks');
+                progress.recv(0);
                 return;
             }
             var data = new Uint8ClampedArray(event.data);
