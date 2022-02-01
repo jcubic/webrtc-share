@@ -20,7 +20,7 @@
  *  MIT licensed POC can be found at https://codepen.io/jcubic/pen/yvMeRg
  *
  */
-/* global firebase, PeerConnection, URL, Blob, Promise, FileReader, room */
+/* global firebase, PeerConnection, URL, Blob, Promise, FileReader, room, transfer_type */
 (function() {
     var config = {
         apiKey: "AIzaSyCiYZ-_3zXQCu6DIkOd_HRGLCS3s6bIYiE",
@@ -41,7 +41,7 @@
             }
         ]
     };
-    const message_channel = 'WebRTC';
+    const message_channel = 'WebRTC_send_jcubic_pl';
     firebase.initializeApp(config);
     var db_ref = firebase.database().ref('send/' + room);
     // ------------------------------------------------------------------------
@@ -242,9 +242,12 @@
     function button(message, enabled) {
         var send = document.getElementById('send');
         if (enabled) {
-            send.disabled = file.disabled = false;
+            send.disabled = false;
         } else {
-            send.disabled = file.disabled = true;
+            send.disabled = true;
+        }
+        if (file instanceof HTMLElement) {
+            file.disabled = send.disabled;
         }
         send.innerHTML = message;
     }
@@ -286,11 +289,6 @@
         log('IP detected ' + ip);
     });
     var progress = new Progress();
-    // ------------------------------------------------------------------------
-    document.querySelector('.send-btn').addEventListener('click', function() {
-        progress.recv(0);
-        progress.send(0);
-    });
     // ------------------------------------------------------------------------
     connection.on('recv', function(value) {
         progress.recv(value);
@@ -379,16 +377,34 @@
         });
     }
     // ------------------------------------------------------------------------
-    file.addEventListener('change', function(e) {
-        // happen on select file (send) + then select and cancel
-        if (e.target.files.length) {
-            FileHandler.fromFile(e.target.files[0], function(percent) {
-                progress.send(percent);
-            }).then(function(handler) {
-                handler.send(dataChannel);
-            });
-        }
-    });
+    if (transfer_type === 'string') {
+        document.querySelector('.send-btn').addEventListener('click', function(e) {
+            if (e.target.disabled) {
+                return;
+            }
+            progress.recv(0);
+            var message = prompt('What is the message?');
+            dataChannel.send(JSON.stringify({
+                message: message
+            }));
+            progress.send(100);
+        });
+    } else if (typeof file !== 'undefined') {
+        file.addEventListener('change', function(e) {
+            // happen on select file (send) + then select and cancel
+            if (e.target.files.length) {
+                FileHandler.fromFile(e.target.files[0], function(percent) {
+                    progress.send(percent);
+                }).then(function(handler) {
+                    handler.send(dataChannel);
+                });
+            }
+        });
+        document.querySelector('.send-btn').addEventListener('click', function() {
+            progress.recv(0);
+            progress.send(0);
+        });
+    }
     // ------------------------------------------------------------------------
     var message_callback = (function() {
         var buf, count, meta;
@@ -397,12 +413,17 @@
             console.log(event);
             if (typeof event.data === 'string') {
                 meta = JSON.parse(event.data);
-                buf = window.buf = new Uint8ClampedArray(meta.length);
-                n = count = 0;
-                file.disable = true;
-                log('receiving file `' + meta.filename + '`');
-                log('expecting a total of ' + formatBytes(buf.byteLength) + ' in ' + meta.chunks + ' chunks');
-                progress.recv(0);
+                if (meta.length && meta.filename) {
+                    buf = window.buf = new Uint8ClampedArray(meta.length);
+                    n = count = 0;
+                    file.disable = true;
+                    log('receiving file `' + meta.filename + '`');
+                    log('expecting a total of ' + formatBytes(buf.byteLength) + ' in ' + meta.chunks + ' chunks');
+                    progress.recv(0);
+                } else if ('message' in meta) {
+                    log('message receive: "' + meta.message + '"');
+                    progress.recv(100);
+                }
                 return;
             }
             var data = new Uint8ClampedArray(event.data);

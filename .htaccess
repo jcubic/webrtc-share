@@ -7,4 +7,10 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCOnd %{REQUEST_URI} :
+RewriteRule ([^:]*):(.*) index.php?type=$1&room=$2 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCOnd %{REQUEST_URI} !:
 RewriteRule (.*) index.php?room=$1 [L]
