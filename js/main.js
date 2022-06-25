@@ -384,10 +384,13 @@
             }
             progress.recv(0);
             var message = prompt('What is the message?');
-            dataChannel.send(JSON.stringify({
-                message: message
-            }));
-            progress.send(100);
+            if (message) {
+                dataChannel.send(JSON.stringify({
+                    message: message
+                }));
+                progress.send(100);
+                log('message sent: "' + message + '"');
+            }
         });
     } else if (typeof file !== 'undefined') {
         file.addEventListener('change', function(e) {
