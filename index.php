@@ -65,7 +65,7 @@ function generate_name() {
 }
 
 function self_url() {
-    return origin() . strtok($_SERVER[REQUEST_URI], '?');
+    return origin() . strtok($_SERVER['REQUEST_URI'], '?');
 }
 
 function origin() {
