@@ -22,6 +22,10 @@
  *
  */
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if ((!isset($_GET['room']) || empty($_GET['room'])) && !is_facebook()) {
     $url = self_url();
     $room = generate_name();
