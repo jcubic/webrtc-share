@@ -3,7 +3,7 @@
  *  This file is part of WebRTC Share (https://send.jcubic.pl)
  *  Application code for WebRTC/Firebase based P2P file sharing app
  *
- *  Copyright (C) Jakub T. Jankiewicz <https://jcubic.pl>
+ *  Copyright (C) Jakub T. Jankiewicz <https://jcubic.pl/me>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
