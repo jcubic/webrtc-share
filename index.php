@@ -124,7 +124,7 @@ $origin = origin();
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
     <script src="<?= $root ?>js/rtcpeerconnection.bundle.js"></script>
 
-    <script>var room = '<?= $_GET['room'] ?>'; var transfer_type = '<?= $_GET['type'] ?>';</script>
+    <script>var room = '<?= $_GET['room'] ?>'; var transfer_type = '<?= isset($_GET['type']) ? $_GET['type']: '' ?>';</script>
     <link rel="stylesheet" href="<?= $root ?>css/style.css"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
