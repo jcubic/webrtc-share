@@ -32,12 +32,29 @@
     };
     var servers = {
         iceServers: [
-            {urls: 'stun:stun.services.mozilla.com'}, // there are free public stun servers
-            {urls: 'stun:stun.l.google.com:19302'},   // but turn are not
             {
-                urls: 'turn:numb.viagenie.ca',
-                credential: 'vampire666',  // some old password I've used, typed by mistake
-                username: 'jcubic@onet.pl' // you can create free turn account on that link
+                urls: "stun:stun.relay.metered.ca:80"
+            },
+            // TURN service please register at https://www.metered.ca/
+            {
+                urls: "turn:a.relay.metered.ca:80",
+                username: "fad444a63bcf5c8176a3e139",
+                credential: "MQm2u8W0l1TCVMm0"
+            },
+            {
+                urls: "turn:a.relay.metered.ca:80?transport=tcp",
+                username: "fad444a63bcf5c8176a3e139",
+                credential: "MQm2u8W0l1TCVMm0"
+            },
+            {
+                urls: "turn:a.relay.metered.ca:443",
+                username: "fad444a63bcf5c8176a3e139",
+                credential: "MQm2u8W0l1TCVMm0"
+            },
+            {
+                urls: "turn:a.relay.metered.ca:443?transport=tcp",
+                username: "fad444a63bcf5c8176a3e139",
+                credential: "MQm2u8W0l1TCVMm0"
             }
         ]
     };
