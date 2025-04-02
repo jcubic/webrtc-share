@@ -231,7 +231,7 @@
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     }
     // ------------------------------------------------------------------------
-    function log(str) {
+    function log(str, trim = true) {
         var date = new Date();
         var nums = [date.getHours(), date.getMinutes(), date.getSeconds()];
         var time_str = nums.map((n) => pad(n, 2)).join(':');
@@ -243,7 +243,10 @@
             console.log(new Error().stack);
         }
         str = '[' + time_str + '] ' + str;
-        textarea.value += (str.length > 100 ? str.slice(0, 97) + '...' : str) + '\n';
+        if (trim) {
+            str = (str.length > 100 ? str.slice(0, 97) + '...' : str) + '\n';
+        }
+        textarea.value += str;
         textarea.scrollTop = textarea.scrollHeight;
     }
     // ------------------------------------------------------------------------
@@ -441,7 +444,7 @@
                     log('expecting a total of ' + formatBytes(buf.byteLength) + ' in ' + meta.chunks + ' chunks');
                     progress.recv(0);
                 } else if ('message' in meta) {
-                    log('message receive: "' + meta.message + '"');
+                    log('message receive: "' + meta.message + '"', false);
                     progress.recv(100);
                 }
                 return;
