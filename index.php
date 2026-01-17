@@ -88,6 +88,10 @@ function hash36($filename) {
     }, $arr));
 }
 
+function with_hash($file) {
+    return $file . "?" . hash36($file);
+}
+
 function sanitize($str) {
     return preg_replace('/[^a-z-]/', '', strtolower($str));
 }
@@ -158,6 +162,6 @@ $type = isset($_GET['type']) ? sanitize($_GET['type']) : '';
       <summary>Connection Log</summary>
       <textarea class="log" readonly></textarea>
     </details>
-    <script src="<?= $root ?>js/main.js?<?= hash36("js/main.js") ?>"></script>
+    <script src="<?= $root . with_hash("js/main.js") ?>"></script>
   </body>
 </html>
