@@ -170,23 +170,25 @@
         }));
         log('prepare file `' + this.filename + '`');
         log('sending total of ' + formatBytes(len) + ' in ' + chunks + ' chunks');
-        for (var i = 0; i < n; i++) {
-            var start = i * chunk_size,
-                end = (i + 1) * chunk_size;
-            log('sending ' + i + ' chunk');
-            this.progress(i * 100 / chunks);
-            dataChannel.send(this.arraybuffer.slice(start, end));
-        }
-        // send the reminder, if any
-        if (len % chunk_size) {
-            this.progress(100);
-            dataChannel.send(this.arraybuffer.slice(n * chunk_size));
-            if (n === 0) {
-                log('sending data');
-            } else {
-                log('sending last chunk');
+        awake(function() {
+            for (var i = 0; i < n; i++) {
+                var start = i * chunk_size,
+                    end = (i + 1) * chunk_size;
+                log('sending ' + i + ' chunk');
+                this.progress(i * 100 / chunks);
+                dataChannel.send(this.arraybuffer.slice(start, end));
             }
-        }
+            // send the reminder, if any
+            if (len % chunk_size) {
+                this.progress(100);
+                dataChannel.send(this.arraybuffer.slice(n * chunk_size));
+                if (n === 0) {
+                    log('sending data');
+                } else {
+                    log('sending last chunk');
+                }
+            }
+        });
     };
     // ------------------------------------------------------------------------
     FileHandler.fromFile = function(file, progress) {
@@ -229,6 +231,20 @@
         z = z || '0';
         n = n + '';
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    }
+    // ------------------------------------------------------------------------
+    function awake(callback) {
+        if (!("wakeLock" in navigator)) {
+            callback();
+            return Promise.resolve();
+        }
+        return navigator.wakeLock.request('screen').then(function(lock) {
+            try {
+                callback();
+            } finally {
+                return lock.release()
+            }
+        });
     }
     // ------------------------------------------------------------------------
     function log(str, trim = true) {
