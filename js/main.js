@@ -38,23 +38,23 @@
             // TURN service please register at https://www.metered.ca/
             {
                 urls: "turn:a.relay.metered.ca:80",
-                username: "fad444a63bcf5c8176a3e139",
-                credential: "MQm2u8W0l1TCVMm0"
+                username: "a068f78994872be327d1b0fe",
+                credential: "HgYaBsXAZbrAKjXh"
             },
             {
                 urls: "turn:a.relay.metered.ca:80?transport=tcp",
-                username: "fad444a63bcf5c8176a3e139",
-                credential: "MQm2u8W0l1TCVMm0"
+                username: "a068f78994872be327d1b0fe",
+                credential: "HgYaBsXAZbrAKjXh"
             },
             {
                 urls: "turn:a.relay.metered.ca:443",
-                username: "fad444a63bcf5c8176a3e139",
-                credential: "MQm2u8W0l1TCVMm0"
+                username: "a068f78994872be327d1b0fe",
+                credential: "HgYaBsXAZbrAKjXh"
             },
             {
                 urls: "turn:a.relay.metered.ca:443?transport=tcp",
-                username: "fad444a63bcf5c8176a3e139",
-                credential: "MQm2u8W0l1TCVMm0"
+                username: "a068f78994872be327d1b0fe",
+                credential: "HgYaBsXAZbrAKjXh"
             }
         ]
     };
